@@ -1,14 +1,10 @@
 [user]
 	email = garyanewsome@gmail.com
 	name = Gary A. Newsome
-	signingkey = F3967C58D73CFB76
 [push]
 	default = simple
 [alias]
   pretty = log --graph --pretty=format:'%G? %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   cleanup = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 [core]
-  editor = eval $SUBL -n -w
-[mergetool "sublime"]
-  cmd = eval $SUBL -w $MERGED
-  trustExitCode = false
+  editor = code
