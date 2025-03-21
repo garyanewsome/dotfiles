@@ -10,4 +10,4 @@ fi
 
 DATE=`date +%Y-%m-%d_%H:%M:S`
 
- git pull && git add . &&  git commit -q -m"Auto Sync: ($DATE)" && git push
+ git pull && git add --all &&  git commit -q -m"Auto Sync: ($DATE)" && git push

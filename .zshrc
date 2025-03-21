@@ -41,4 +41,12 @@ alias reddown="brew services stop redis"
 # python simple server optional port param ( defaults to 8000 )
 alias serve='python -m SimpleHTTPServer $1'
 
+############
+# Functions
+############
 
+docker-reset () {
+    docker rmi $(docker images -a -q) || true
+    docker system prune -f
+    docker volume prune -f
+}
