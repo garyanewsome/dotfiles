@@ -17,16 +17,15 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Set zsh prompt
 #################
 
-# Load version control information
-autoload -Uz vcs_info
-precmd() { vcs_info }
+autoload -U colors && colors
 
-# Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '( %b )'
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
 
-# Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
-PROMPT='%1d ${vcs_info_msg_0_} %# '
+PROMPT='%{$fg[green]%}%n%{$reset_color%} %{$fg[blue]%}%1~%{$reset_color%} %{$fg[yellow]%}$(parse_git_branch)%{$reset_color%} $ '
+
 
 ########
 # Alias
@@ -37,6 +36,8 @@ alias pgdown='brew services stop postgres'
 
 alias redup="brew services start redis"
 alias reddown="brew services stop redis"
+
+alias repl="NODE_PATH=$(npm root -g) node"
 
 # python simple server optional port param ( defaults to 8000 )
 alias serve='python -m SimpleHTTPServer $1'
